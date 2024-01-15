@@ -1,6 +1,6 @@
 import React from "react";
 import MovieStats from "./MovieStats";
-import { ShoppingCartIcon, XCircleIcon } from "@heroicons/react/24/outline";
+import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function DetailsModal({ movie, setModal, addToCart }) {
   const year = new Date(movie.release_date).getFullYear();
@@ -12,7 +12,7 @@ export default function DetailsModal({ movie, setModal, addToCart }) {
             onClick={() => setModal(false)}
             className="absolute top-3 right-3"
           >
-            <XCircleIcon className="w-4 h-4 " />
+            <XMarkIcon className="w-4 h-4 text-[#8e95a1]" />
           </button>
           <div className="flex gap-5">
             <div className="w-4/12 flex flex-col ">
