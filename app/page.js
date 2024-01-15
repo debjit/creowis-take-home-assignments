@@ -9,14 +9,18 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { demoData } from "@/data/demo.service";
 import MovieCard from "@/components/card/MovieCard";
+import ShowShopItemsModal from "@/components/common/ShowShopItemsModal";
 
 export default function Home() {
   const [movies, setMovies] = useState([...demoData]);
+  const [showShopItems, setShowShopItems] = useState(false);
   const [cart, setCart] = useState([]);
   useEffect(() => {
     console.log("🚀 ~ Home ~ cart:", cart);
   }, [cart]);
-
+function showShopModal() {
+  setShowShopItems(!showShopItems);
+}
   return (
     <>
       <nav className=" bg-[#111827] border-b border-[#1f2937]">
@@ -26,7 +30,7 @@ export default function Home() {
           </Link>
           <div className="flex items-center gap-4 text-[#6b7280]">
             <BellIcon className="w-5 h-5" />
-            <button className="flex relative">
+            <button className="flex relative" onClick={showShopModal}>
               <ShoppingCartIcon className="w-5 h-5" />
               {cart.length > 0 && (
                 <span className="absolute -top-2 -right-1.5 text-xs rounded-full bg-yellow-500 px-1 font-bold w-4 h-4">
@@ -52,6 +56,7 @@ export default function Home() {
             ))}
         </section>
       </main>
+      {showShopItems && <ShowShopItemsModal setCart={setCart} setModal={setShowShopItems} cart={cart} />}
     </>
   );
 }

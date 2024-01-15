@@ -1,14 +1,21 @@
 import { ShoppingCartIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/24/solid";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DetailsModal from "../common/DetailsModal";
 import MovieStats from "../common/MovieStats";
 
 export default function MovieCard({ movie, setCart, cart }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(
-    cart.find((item) => item.id == movie.id) ? true : false
+    checkCurrentMovieIsSelected()
   );
+  useEffect(() => {
+    setSelectedMovie(checkCurrentMovieIsSelected());
+  }, [cart]);
+
+  function checkCurrentMovieIsSelected() {
+    return cart.find((item) => item.id == movie.id) ? true : false;
+  }
 
   function addToCart() {
     setCart((prev) => {
