@@ -14,7 +14,7 @@ export default function DetailsModal({ movie, setModal, addToCart }) {
           >
             <XCircleIcon className="w-4 h-4 " />
           </button>
-          <div className="flex gap-3">
+          <div className="flex gap-5">
             <div className="w-4/12 flex flex-col ">
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -32,9 +32,14 @@ export default function DetailsModal({ movie, setModal, addToCart }) {
             </div>
             <div className="w-8/12 flex flex-col ">
               <h3 className="text-xl">{movie.title}</h3>
-              <p className="text-xs pt-1">{year}</p>
-              <MovieStats movie={movie} className={" text-white"} />
-              <p className="text-white text-xs leading-5 overflow-auto">
+              <div className="flex items-center text-[#8e95a1]">
+                <span className="text-xs pt-1">{year}</span>
+                <span className="mx-2 w-1 h-1 bg-[#6b7280] rounded-full"></span>
+                <span className="text-xs pt-1">{movie.duration} minutes</span>
+              </div>
+              <MovieStats movie={movie} />
+              <hr className="h-px mb-3 mt-0.5 bg-[#8e95a1] border-0" />
+              <p className="text-[#8e95a1] text-xs leading-5 overflow-auto">
                 {movie.overview}
               </p>
             </div>

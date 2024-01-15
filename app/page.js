@@ -21,7 +21,7 @@ export default function Home() {
     <>
       <nav className=" bg-[#111827] border-b border-[#1f2937]">
         <div className="flex justify-between max-w-5xl mx-auto px-12 py-3">
-          <Link href="/" className="text-xl font-semibold">
+          <Link href="/" className="text-xl font-semibold" id="logo">
             CineFlix
           </Link>
           <div className="flex items-center gap-4 text-[#6b7280]">
@@ -40,7 +40,7 @@ export default function Home() {
       </nav>
       {/* <main className="flex min-h-screen flex-col items-center justify-between bg-[#030712] pt-5 px-12 border"> */}
       <main className="min-h-screen bg-[#030712] ">
-        <section className="pt-5 px-12 pb-8 max-w-5xl mx-auto grid grid-cols-4 gap-5">
+        <section className="pt-5 px-12 pb-8 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4  gap-5">
           {movies &&
             movies.map((movie) => (
               <MovieCard
