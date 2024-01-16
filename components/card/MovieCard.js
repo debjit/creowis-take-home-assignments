@@ -9,6 +9,8 @@ export default function MovieCard({ movie, setCart, cart }) {
   const [selectedMovie, setSelectedMovie] = useState(
     checkCurrentMovieIsSelected()
   );
+  // Todo: This updates the the card when cart changes, 
+  // need to move parent level so it will only change when this card updates.
   useEffect(() => {
     setSelectedMovie(checkCurrentMovieIsSelected());
   }, [cart]);
@@ -50,9 +52,10 @@ export default function MovieCard({ movie, setCart, cart }) {
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt=""
           className="rounded-t-sm"
+          onClick={showHideModal}
         />
         <div className="p-3">
-          <h3>{movie.title}</h3>
+          <h3 onClick={showHideModal}>{movie.title}</h3>
           <MovieStats movie={movie} />
           <div className="flex justify-between">
             {!selectedMovie ? (
